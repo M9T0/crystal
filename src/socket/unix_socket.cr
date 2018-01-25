@@ -96,8 +96,8 @@ class UNIXSocket < Socket
     UNIXAddress.new(path.to_s)
   end
 
-  def receive
-    bytes_read, sockaddr, addrlen = recvfrom
+  def receive(message)
+    bytes_read, sockaddr, addrlen = recvfrom(message)
     {bytes_read, UNIXAddress.from(sockaddr, addrlen)}
   end
 end
